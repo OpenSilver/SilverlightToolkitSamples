@@ -9,6 +9,10 @@ using System.Windows.Controls;
 
 namespace System.Windows.Controls.Samples.SyntaxHighlighting
 {
+#if OPENSILVER
+    using RichTextBox = RichTextBlock;
+#endif
+
     /// <summary>
     /// A simple text control for displaying syntax highlighted source code.
     /// </summary>

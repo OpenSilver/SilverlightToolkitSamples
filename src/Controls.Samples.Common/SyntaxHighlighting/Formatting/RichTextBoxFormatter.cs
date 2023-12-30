@@ -9,6 +9,10 @@ using System.Windows.Media;
 
 namespace System.Windows.Controls.Samples.SyntaxHighlighting
 {
+#if OPENSILVER
+    using RichTextBox = RichTextBlock;
+#endif
+
     // CONSIDER: background worker to improve performance, with all UI
     // generation at the end.
 
@@ -149,7 +153,11 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
 
             if (_textBox != null)
             {
+#if OPENSILVER
+                _textBox.Select(_textBox.ContentStart, _textBox.ContentStart);
+#else
                 _textBox.Selection.Select(_textBox.ContentStart, _textBox.ContentStart);
+#endif
             }
         }
 

@@ -6,6 +6,7 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace System.Windows.Controls.Samples
 {
@@ -50,11 +51,19 @@ namespace System.Windows.Controls.Samples
 
             // Simulate a long-running task by sleeping on a worker thread
             DataContext = true;
+#if OPENSILVER
+            Task.Run(async () =>
+            {
+                await Task.Delay(busySeconds * 1000);
+                Dispatcher.BeginInvoke(() => DataContext = false);
+            });
+#else
             ThreadPool.QueueUserWorkItem((state) =>
             {
                 Thread.Sleep(busySeconds * 1000);
                 Dispatcher.BeginInvoke(() => DataContext = false);
             });
+#endif
         }
     }
 }

@@ -23,19 +23,36 @@ namespace System.Windows.Controls.Samples
     public static class SampleGenerators
     {
         /// <summary>
+        /// Stores a shared random number generator.
+        /// </summary>
+        private static Random _random = new Random();
+
+        /// <summary>
         /// Stores a shared ObservableCollection for use by the dynamic collection scenario.
         /// </summary>
-        private static ObservableCollection<int> _dynamicCollectionItemsSource = new ObservableCollection<int>();
+        private static ObservableCollection<int> _dynamicCollectionItemsSource = new ObservableCollection<int>
+        {
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+            _random.Next(1, 11),
+        };
 
         /// <summary>
         /// Stores a shared List for use by the dynamic data items scenario.
         /// </summary>
         private static List<Pet> _dynamicDataItemsSource = new List<Pet>
         {
-            new Pet { Species = "Dogs" },
-            new Pet { Species = "Cats" },
-            new Pet { Species = "Birds" },
-            new Pet { Species = "Fish" },
+            new Pet { Species = "Dogs", Count = _random.Next(1, 20) },
+            new Pet { Species = "Cats", Count = _random.Next(1, 20) },
+            new Pet { Species = "Birds", Count = _random.Next(1, 20) },
+            new Pet { Species = "Fish", Count = _random.Next(1, 20) },
         };
 
         /// <summary>
@@ -43,18 +60,13 @@ namespace System.Windows.Controls.Samples
         /// </summary>
         private static List<Pair> _dynamicDateItemsSource = new List<Pair>
         {
-            new Pair { First = new DateTime(2008, 10, 11), Second = 0.0 },
-            new Pair { First = new DateTime(2008, 10, 12), Second = 0.0 },
-            new Pair { First = new DateTime(2008, 10, 13), Second = 0.0 },
-            new Pair { First = new DateTime(2008, 10, 14), Second = 0.0 },
-            new Pair { First = new DateTime(2008, 10, 15), Second = 0.0 },
-            new Pair { First = new DateTime(2008, 10, 16), Second = 0.0 },
+            new Pair { First = new DateTime(2008, 10, 11), Second = _random.NextDouble() * 20 },
+            new Pair { First = new DateTime(2008, 10, 12), Second = _random.NextDouble() * 20 },
+            new Pair { First = new DateTime(2008, 10, 13), Second = _random.NextDouble() * 20 },
+            new Pair { First = new DateTime(2008, 10, 14), Second = _random.NextDouble() * 20 },
+            new Pair { First = new DateTime(2008, 10, 15), Second = _random.NextDouble() * 20 },
+            new Pair { First = new DateTime(2008, 10, 16), Second = _random.NextDouble() * 20 },
         };
-
-        /// <summary>
-        /// Stores a shared random number generator.
-        /// </summary>
-        private static Random _random = new Random();
 
         /// <summary>
         /// Initializes static members of the SampleGenerators class.
@@ -62,6 +74,8 @@ namespace System.Windows.Controls.Samples
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "Need to do additional initialization.")]
         static SampleGenerators()
         {
+            // Disable timer or the app hangs
+#if !OPENSILVER
             // Create a timer to update the dynamic data regularly
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = TimeSpan.FromSeconds(2);
@@ -87,6 +101,7 @@ namespace System.Windows.Controls.Samples
                 }
             };
             dispatcherTimer.Start();
+#endif
         }
 
         /// <summary>

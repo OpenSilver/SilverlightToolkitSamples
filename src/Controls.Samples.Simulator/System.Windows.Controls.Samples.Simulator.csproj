@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+    <PackageReference Include="OpenSilver.Simulator" Version="2.1.0-preview-2024-01-02-101826-838ba684" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Controls.Samples\Controls.Samples.OpenSilver.csproj" />
+	</ItemGroup>
+
+</Project>

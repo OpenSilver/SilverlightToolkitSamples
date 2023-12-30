@@ -114,7 +114,10 @@ namespace System.Windows.Controls.Samples
             Assembly[] assemblies = 
             { 
                 typeof(Button).Assembly,
+                // TreeView is in the same assembly as Button
+#if !OPENSILVER
                 typeof(TreeView).Assembly,
+#endif
                 typeof(AutoCompleteBox).Assembly,
                 typeof(Chart).Assembly,
             };

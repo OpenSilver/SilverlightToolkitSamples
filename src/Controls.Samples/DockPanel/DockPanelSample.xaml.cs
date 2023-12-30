@@ -44,7 +44,7 @@ namespace System.Windows.Controls.Samples
                 FontStyles.Italic :
                 FontStyles.Normal;
             UsageText.TextDecorations = (btnUnderline.IsChecked == true) ?
-                TextDecorations.Underline :
+                Windows.TextDecorations.Underline :
                 null;
         }
     }

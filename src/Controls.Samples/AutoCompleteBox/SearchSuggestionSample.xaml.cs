@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Browser;
 using System.Windows.Controls;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace System.Windows.Controls.Samples
 {
@@ -65,7 +66,7 @@ namespace System.Windows.Controls.Samples
         /// </summary>
         /// <param name="sender">The source object.</param>
         /// <param name="e">The event data.</param>
-        private void Search_Populating(object sender, PopulatingEventArgs e)
+        private async void Search_Populating(object sender, PopulatingEventArgs e)
         {
             AutoCompleteBox autoComplete = (AutoCompleteBox)sender;
 
@@ -73,9 +74,30 @@ namespace System.Windows.Controls.Samples
             e.Cancel = true;
 
             // Create a request for suggestion
+#if OPENSILVER
+            string result = null;
+            Exception error = null;
+            bool cancelled = false;
+
+            var hc = new Net.Http.HttpClient();
+            try
+            {
+                result = await hc.GetStringAsync(WebServiceHelper.CreateWebSearchSuggestionsUri(autoComplete.SearchText));
+            }
+            catch (TaskCanceledException)
+            {
+                cancelled = true;
+            }
+            catch (Exception ex)
+            {
+                error = ex;
+            }
+            OnDownloadStringCompleted(autoComplete, error, cancelled, result);
+#else
             WebClient wc = new WebClient();
             wc.DownloadStringCompleted += OnDownloadStringCompleted;
             wc.DownloadStringAsync(WebServiceHelper.CreateWebSearchSuggestionsUri(autoComplete.SearchText), autoComplete);
+#endif
         }
 
         /// <summary>
@@ -86,13 +108,18 @@ namespace System.Windows.Controls.Samples
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Any failure in the Json or request parsing should not be surfaced.")]
         private void OnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            AutoCompleteBox autoComplete = e.UserState as AutoCompleteBox;
-            if (autoComplete != null && e.Error == null && !e.Cancelled && !string.IsNullOrEmpty(e.Result))
+            OnDownloadStringCompleted(e.UserState, e.Error, e.Cancelled, e.Result);
+        }
+
+        private void OnDownloadStringCompleted(object userState, Exception error, bool cancelled, string res)
+        {
+            AutoCompleteBox autoComplete = userState as AutoCompleteBox;
+            if (autoComplete != null && error == null && !cancelled && !string.IsNullOrEmpty(res))
             {
                 List<string> data = new List<string>();
                 try
                 {
-                    JsonArray result = (JsonArray)JsonArray.Parse(e.Result);
+                    JsonArray result = (JsonArray)JsonArray.Parse(res);
                     if (result.Count > 1)
                     {
                         string originalSearchString = result[0];

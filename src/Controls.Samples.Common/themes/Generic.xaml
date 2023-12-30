@@ -20,7 +20,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:SyntaxHighlightingTextBox">
-                    <RichTextBox x:Name="RichTextBox" IsReadOnly="True" BorderThickness="0" Margin="{TemplateBinding Padding}" />
+                    <!-- #if OPENSILVER -->
+                    <Border Background="White" Padding="2">
+                        <RichTextBlock x:Name="RichTextBox" Margin="{TemplateBinding Padding}" />
+                    </Border>
+                    <!-- #else -->
+                    <!--<RichTextBox x:Name="RichTextBox" IsReadOnly="True" BorderThickness="0" Margin="{TemplateBinding Padding}" />-->
+                    <!-- #endif -->
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

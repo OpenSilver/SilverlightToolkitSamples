@@ -70,6 +70,12 @@ namespace System.Windows.Controls.Samples
             sample.VerticalAlignment = VerticalAlignment.Top;
             sample.HorizontalAlignment = HorizontalAlignment.Left;
             sample.Margin = new Thickness(10, 0, 0, 0);
+#if OPENSILVER
+            if (sample is Control control)
+            {
+                control.Foreground = SampleBrowser.Current.Foreground;
+            }
+#endif
             return sample;
         }
 
