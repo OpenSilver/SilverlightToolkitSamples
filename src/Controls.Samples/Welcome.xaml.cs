@@ -76,7 +76,9 @@ namespace System.Windows.Controls.Samples
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Justification = "Event connected in XAML.")]
         private void InstallSamplesClick(object sender, RoutedEventArgs e)
         {
+#if !OPENSILVER
             Application.Current.Install();
+#endif
         }
     }
 }

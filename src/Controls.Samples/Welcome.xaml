@@ -65,15 +65,15 @@
                 Thank you, and enjoy,
                 <LineBreak /><LineBreak />
 
-                <Run FontStyle="Italic">The Silverlight Team</Run>
+                <Run FontStyle="Italic">The OpenSilver Team</Run>
         </TextBlock>
 
         <!-- Link to the CodePlex site -->
         <HyperlinkButton 
           Foreground="#FF1F3269" 
           Grid.Row="4"
-          Content="http://silverlight.codeplex.com/"
-          NavigateUri="http://silverlight.codeplex.com/"
+          Content="https://github.com/OpenSilver/OpenSilver"
+          NavigateUri="https://github.com/OpenSilver/OpenSilver"
           TargetName="_blank"
           FontSize="12" 
           Margin="2,0,0,0" />

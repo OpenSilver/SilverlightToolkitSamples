@@ -1816,7 +1816,7 @@
                                 <!-- Bug report link -->
                                 <HyperlinkButton 
                                   Content="Report bugs, ask questions, request features on"
-                                  NavigateUri="http://silverlight.codeplex.com/"
+                                  NavigateUri="https://github.com/OpenSilver/OpenSilver"
                                   TargetName="_blank"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Right"
@@ -1824,13 +1824,13 @@
                                   Foreground="#FFFFFF"/>
                                 <!-- CodePlex logo link -->
                                 <HyperlinkButton
-                                  NavigateUri="http://silverlight.codeplex.com/"
+                                  NavigateUri="https://github.com/OpenSilver/OpenSilver"
                                   TargetName="_blank"
                                   HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                   Margin="0,1,10,0"
                                   Foreground="#FFFFFF">
-                                    <samplesCommon:EmbeddedImage ResourceName="codeplexlogo.png" Width="50" Height="17"/>
+                                    <samplesCommon:EmbeddedImage ResourceName="githublogo.png" Width="50" Height="17"/>
                                 </HyperlinkButton>
                             </StackPanel>
                         </Border>

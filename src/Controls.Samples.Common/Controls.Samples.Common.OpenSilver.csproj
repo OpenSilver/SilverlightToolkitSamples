@@ -171,6 +171,9 @@
     <EmbeddedResource Include="Icons\codeplexlogo.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Icons\githublogo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="SampleBrowser\EmbeddedImage.xaml" />
   </ItemGroup>
   <ItemGroup>

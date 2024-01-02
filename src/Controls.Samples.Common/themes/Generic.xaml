@@ -1823,10 +1823,10 @@
                         <Border Background="#67000000" Margin="0,20,0,0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
                             <StackPanel Margin="0,1,0,1" Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!-- Bug report link -->
-                                <HyperlinkButton Content="Report bugs, ask questions, request features on" NavigateUri="http://silverlight.codeplex.com/" TargetName="_blank" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0,5,0" Foreground="#FFFFFF" />
+                                <HyperlinkButton Content="Report bugs, ask questions, request features on" NavigateUri="https://github.com/OpenSilver/OpenSilver" TargetName="_blank" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0,5,0" Foreground="#FFFFFF" />
                                 <!-- CodePlex logo link -->
-                                <HyperlinkButton NavigateUri="http://silverlight.codeplex.com/" TargetName="_blank" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,1,10,0" Foreground="#FFFFFF">
-                                    <samplesCommon:EmbeddedImage ResourceName="codeplexlogo.png" Width="50" Height="17" />
+                                <HyperlinkButton NavigateUri="https://github.com/OpenSilver/OpenSilver" TargetName="_blank" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,1,10,0" Foreground="#FFFFFF">
+                                    <samplesCommon:EmbeddedImage ResourceName="githublogo.png" Width="50" Height="17" />
                                 </HyperlinkButton>
                             </StackPanel>
                         </Border>
