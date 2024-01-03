@@ -74,8 +74,6 @@ namespace System.Windows.Controls.Samples
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "Need to do additional initialization.")]
         static SampleGenerators()
         {
-            // Disable timer or the app hangs
-#if !OPENSILVER
             // Create a timer to update the dynamic data regularly
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = TimeSpan.FromSeconds(2);
@@ -101,7 +99,6 @@ namespace System.Windows.Controls.Samples
                 }
             };
             dispatcherTimer.Start();
-#endif
         }
 
         /// <summary>
@@ -255,6 +252,28 @@ namespace System.Windows.Controls.Samples
                 grid.Children.Add(chart);
                 panel.Children.Add(grid);
             }
+        }
+
+        public static void ClearSeriesSamples(Panel panel)
+        {
+            Style wrapperStyle = Application.Current.Resources["WrapperStyle"] as Style;
+
+            foreach (Grid grid in panel.Children.OfType<Grid>())
+            {
+                if (grid.Style != wrapperStyle) continue;
+
+                foreach (Chart chart in grid.Children.OfType<Chart>())
+                {
+                    foreach (DataPointSeries series in chart.Series.OfType<DataPointSeries>())
+                    {
+                        series.ItemsSource = null;
+                        series.DependentValueBinding = null;
+                        series.IndependentValueBinding = null;
+                    }
+                }
+            }
+
+            panel.Children.Clear();
         }
 
         /// <summary>

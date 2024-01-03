@@ -22,9 +22,13 @@ namespace System.Windows.Controls.Samples
         {
             InitializeComponent();
 
-            SampleGenerators.GenerateNumericSeriesSamples(GeneratedChartsPanel, () => new BubbleSeries(), true);
-            SampleGenerators.GenerateDateTimeValueSeriesSamples(GeneratedChartsPanel, () => new BubbleSeries());
-            SampleGenerators.GenerateMultipleValueSeriesSamples(GeneratedChartsPanel, () => new BubbleSeries(), true);
+            Loaded += (o, e) =>
+            {
+                SampleGenerators.GenerateNumericSeriesSamples(GeneratedChartsPanel, () => new BubbleSeries(), true);
+                SampleGenerators.GenerateDateTimeValueSeriesSamples(GeneratedChartsPanel, () => new BubbleSeries());
+                SampleGenerators.GenerateMultipleValueSeriesSamples(GeneratedChartsPanel, () => new BubbleSeries(), true);
+            };
+            Unloaded += (o, e) => SampleGenerators.ClearSeriesSamples(GeneratedChartsPanel);
         }
     }
 }
