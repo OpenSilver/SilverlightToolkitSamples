@@ -1950,7 +1950,7 @@
                                           VerticalContentAlignment="Stretch"
                                           BorderThickness="0">
                                             <!-- Source viewer -->
-                                            <highlighting:SyntaxHighlightingTextBox
+                                            <highlighting:SyntaxHighlightingTextBlock
                                               x:Name="SourceText"
                                               FontSize="12"
                                               FontFamily="Consolas, Courier New"

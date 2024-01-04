@@ -252,7 +252,7 @@ namespace System.Windows.Controls.Samples
         /// <summary>
         /// Gets or sets the source text TextBox.
         /// </summary>
-        private SyntaxHighlightingTextBox SourceText { get; set; }
+        private SyntaxHighlightingTextBlock SourceText { get; set; }
 
         /// <summary>
         /// Gets or sets the sample header label.
@@ -435,7 +435,7 @@ namespace System.Windows.Controls.Samples
             SampleSelection = GetTemplateChild(SampleSelectionName) as TreeView;
             FullScreenButton = GetTemplateChild(FullScreenButtonName) as ToggleButton;
             SourceList = GetTemplateChild(SourceListName) as ListBox;
-            SourceText = GetTemplateChild(SourceTextName) as SyntaxHighlightingTextBox;
+            SourceText = GetTemplateChild(SourceTextName) as SyntaxHighlightingTextBlock;
             SamplesTab = GetTemplateChild(SamplesTabName) as TabControl;
             SampleRoot = GetTemplateChild(RootName) as Grid;
             SampleDisplayArea = GetTemplateChild(SampleDisplayAreaName) as Grid;

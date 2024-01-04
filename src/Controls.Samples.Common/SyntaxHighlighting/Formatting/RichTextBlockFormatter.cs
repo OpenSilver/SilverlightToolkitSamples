@@ -9,22 +9,18 @@ using System.Windows.Media;
 
 namespace System.Windows.Controls.Samples.SyntaxHighlighting
 {
-#if OPENSILVER
-    using RichTextBox = RichTextBlock;
-#endif
-
     // CONSIDER: background worker to improve performance, with all UI
     // generation at the end.
 
     /// <summary>
-    /// A formatter for source that uses a RichTextBox.
+    /// A formatter for source that uses a RichTextBlock.
     /// </summary>
-    internal class RichTextBoxFormatter : IFormatter
+    internal class RichTextBlockFormatter : IFormatter
     {
         /// <summary>
-        /// Backing field for the text box instance.
+        /// Backing field for the text block instance.
         /// </summary>
-        private RichTextBox _textBox;
+        private RichTextBlock _textBlock;
 
         /// <summary>
         /// Paragraph backing field.
@@ -34,21 +30,21 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
         /// <summary>
         /// Initializes a new instance of the XAML inline formatter which will
         /// store the contents of the syntax highlighting results into the
-        /// rich text box instance.
+        /// rich text block instance.
         /// </summary>
-        /// <param name="richTextBox">The rich text box instance.</param>
-        public RichTextBoxFormatter(RichTextBox richTextBox)
+        /// <param name="richTextBlock">The rich text block instance.</param>
+        public RichTextBlockFormatter(RichTextBlock richTextBlock)
             : this()
         {
-            _textBox = richTextBox;
+            _textBlock = richTextBlock;
             _para = new Paragraph();
-            _textBox.Blocks.Add(_para);
+            _textBlock.Blocks.Add(_para);
         }
 
         /// <summary>
-        /// Initializes a new instance of the RichTextBoxFormatter class.
+        /// Initializes a new instance of the RichTextBlockFormatter class.
         /// </summary>
-        protected RichTextBoxFormatter()
+        protected RichTextBlockFormatter()
         {
         }
 
@@ -151,13 +147,9 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
                 }
             }
 
-            if (_textBox != null)
+            if (_textBlock != null)
             {
-#if OPENSILVER
-                _textBox.Select(_textBox.ContentStart, _textBox.ContentStart);
-#else
-                _textBox.Selection.Select(_textBox.ContentStart, _textBox.ContentStart);
-#endif
+                _textBlock.Select(_textBlock.ContentStart, _textBlock.ContentStart);
             }
         }
 

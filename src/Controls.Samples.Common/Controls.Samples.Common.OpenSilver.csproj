@@ -71,7 +71,7 @@
     <Compile Include="SyntaxHighlighting\Compilation\Languages\CSharp.cs" />
     <Compile Include="SyntaxHighlighting\Compilation\Languages\VbDotNet.cs" />
     <Compile Include="SyntaxHighlighting\Compilation\Languages\Xml.cs" />
-    <Compile Include="SyntaxHighlighting\Formatting\RichTextBoxFormatter.cs" />
+    <Compile Include="SyntaxHighlighting\Formatting\RichTextBlockFormatter.cs" />
     <Compile Include="SyntaxHighlighting\Formatting\TextInsertion.cs" />
     <Compile Include="SyntaxHighlighting\ICodeColorizer.cs" />
     <Compile Include="SyntaxHighlighting\IFormatter.cs" />
@@ -87,7 +87,7 @@
     <Compile Include="SyntaxHighlighting\StyleDictionary.cs" />
     <Compile Include="SyntaxHighlighting\StyleSheets.cs" />
     <Compile Include="SyntaxHighlighting\Styling\StyleSheets\DefaultStyleSheet.cs" />
-    <Compile Include="SyntaxHighlighting\SyntaxHighlightingTextBox.cs" />
+    <Compile Include="SyntaxHighlighting\SyntaxHighlightingTextBlock.cs" />
     <Compile Include="WebServiceHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -277,7 +277,10 @@
     <EmbeddedResource Include="Icons\ContextMenu.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SyntaxHighlighting\SyntaxHighlightingTextBox.xaml" />
+    <None Include="SyntaxHighlighting\SyntaxHighlightingTextBlock.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="SyntaxHighlighting\SyntaxHighlightingTextBlock.xaml" />
   </ItemGroup>
 
 </Project>

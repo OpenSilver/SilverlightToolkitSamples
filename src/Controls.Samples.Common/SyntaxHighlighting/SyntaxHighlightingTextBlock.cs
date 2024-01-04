@@ -9,20 +9,16 @@ using System.Windows.Controls;
 
 namespace System.Windows.Controls.Samples.SyntaxHighlighting
 {
-#if OPENSILVER
-    using RichTextBox = RichTextBlock;
-#endif
-
     /// <summary>
     /// A simple text control for displaying syntax highlighted source code.
     /// </summary>
-    [TemplatePart(Name = TextBoxName, Type = typeof(RichTextBox))]
-    public class SyntaxHighlightingTextBox : Control
+    [TemplatePart(Name = TextBlockName, Type = typeof(RichTextBlock))]
+    public class SyntaxHighlightingTextBlock : Control
     {
         /// <summary>
         /// The name of the text block part.
         /// </summary>
-        private const string TextBoxName = "RichTextBox";
+        private const string TextBlockName = "RichTextBlock";
 
         /// <summary>
         /// Shared static color coding system instance.
@@ -32,7 +28,7 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
         /// <summary>
         /// Backing field for the text block.
         /// </summary>
-        private RichTextBox _richTextBox;
+        private RichTextBlock _richTextBlock;
 
         #region public SourceLanguageType SourceLanguage
         /// <summary>
@@ -51,7 +47,7 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
             DependencyProperty.Register(
                 "SourceLanguage",
                 typeof(SourceLanguageType),
-                typeof(SyntaxHighlightingTextBox),
+                typeof(SyntaxHighlightingTextBlock),
                 new PropertyMetadata(SourceLanguageType.CSharp, OnSourceLanguagePropertyChanged));
 
         /// <summary>
@@ -66,7 +62,7 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
         /// <param name="e">Event arguments.</param>
         private static void OnSourceLanguagePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            SyntaxHighlightingTextBox source = d as SyntaxHighlightingTextBox;
+            SyntaxHighlightingTextBlock source = d as SyntaxHighlightingTextBlock;
 
             if (source._ignorePropertyChange)
             {
@@ -110,7 +106,7 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
             DependencyProperty.Register(
                 "Text",
                 typeof(string),
-                typeof(SyntaxHighlightingTextBox),
+                typeof(SyntaxHighlightingTextBlock),
                 new PropertyMetadata(string.Empty, OnTextPropertyChanged));
 
         /// <summary>
@@ -120,7 +116,7 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
         /// <param name="e">Event arguments.</param>
         private static void OnTextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            SyntaxHighlightingTextBox source = d as SyntaxHighlightingTextBox;
+            SyntaxHighlightingTextBlock source = d as SyntaxHighlightingTextBlock;
             source.HighlightContents();
         }
         #endregion public string Text
@@ -129,9 +125,9 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
         /// Initializes a new instance of the SyntaxHighlightingTextBlock
         /// control.
         /// </summary>
-        public SyntaxHighlightingTextBox()
+        public SyntaxHighlightingTextBlock()
         {
-            DefaultStyleKey = typeof(SyntaxHighlightingTextBox);
+            DefaultStyleKey = typeof(SyntaxHighlightingTextBlock);
         }
 
         /// <summary>
@@ -141,8 +137,8 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
         {
             base.OnApplyTemplate();
 
-            _richTextBox = GetTemplateChild(TextBoxName) as RichTextBox;
-            if (_richTextBox != null && !string.IsNullOrEmpty(Text))
+            _richTextBlock = GetTemplateChild(TextBlockName) as RichTextBlock;
+            if (_richTextBlock != null && !string.IsNullOrEmpty(Text))
             {
                 HighlightContents();
             }
@@ -153,13 +149,13 @@ namespace System.Windows.Controls.Samples.SyntaxHighlighting
         /// </summary>
         private void HighlightContents()
         {
-            if (_richTextBox != null)
+            if (_richTextBlock != null)
             {
-                _richTextBox.Blocks.Clear();
+                _richTextBlock.Blocks.Clear();
 
                 if (!string.IsNullOrEmpty(Text))
                 {
-                    RichTextBoxFormatter rtbf = new RichTextBoxFormatter(_richTextBox);
+                    RichTextBlockFormatter rtbf = new RichTextBlockFormatter(_richTextBlock);
 
                     CodeColorizer cc;
                     if (_colorizer != null && _colorizer.IsAlive)

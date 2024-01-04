@@ -9,15 +9,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:System.Windows.Controls.Samples.SyntaxHighlighting">
 
-    <Style TargetType="local:SyntaxHighlightingTextBox">
+    <Style TargetType="local:SyntaxHighlightingTextBlock">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:SyntaxHighlightingTextBox">
-                    <RichTextBox 
-                        x:Name="RichTextBox" 
-                        IsReadOnly="True"
-                        BorderThickness="0"
-                        Margin="{TemplateBinding Padding}"/>
+                <ControlTemplate TargetType="local:SyntaxHighlightingTextBlock">
+                    <Border Background="White" Padding="2">
+                        <RichTextBlock 
+                            x:Name="RichTextBlock" 
+                            Margin="{TemplateBinding Padding}"/>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
