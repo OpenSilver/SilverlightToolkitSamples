@@ -1,12 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net7.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
-    <PackageReference Include="OpenSilver.Simulator" Version="2.1.0" />
+    <PackageReference Include="OpenSilver.Simulator" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
   </ItemGroup>
 
 	<ItemGroup>

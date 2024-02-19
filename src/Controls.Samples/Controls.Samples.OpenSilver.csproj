@@ -15,19 +15,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OpenSilver" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.BubbleCreme" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.BureauBlack" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.BureauBlue" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.ExpressionDark" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.ExpressionLight" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.RainierOrange" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.RainierPurple" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.ShinyBlue" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.ShinyRed" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.SystemColors" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.TwilightBlue" Version="2.1.0" />
-    <PackageReference Include="OpenSilver.Theme.WhistlerBlue" Version="2.1.0" />
+    <PackageReference Include="OpenSilver" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.BubbleCreme" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.BureauBlack" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.BureauBlue" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.ExpressionDark" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.ExpressionLight" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.RainierOrange" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.RainierPurple" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.ShinyBlue" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.ShinyRed" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.SystemColors" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.TwilightBlue" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
+    <PackageReference Include="OpenSilver.Theme.WhistlerBlue" Version="2.2.0-preview-2024-02-19-115030-150cd18c" />
     <PackageReference Include="System.Json" Version="4.7.1" />
   </ItemGroup>
 
