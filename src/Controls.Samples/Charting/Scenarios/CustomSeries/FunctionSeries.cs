@@ -15,6 +15,7 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Controls.DataVisualization;
 using System.Windows.Controls.DataVisualization.Charting;
+using System.Windows.Shapes;
 
 namespace System.Windows.Controls.Samples
 {
@@ -229,7 +230,32 @@ namespace System.Windows.Controls.Samples
 
             // Explicitly load the default template since the samples project
             // is an application and does not have a generic.xaml file.
+#if OPENSILVER
+            var template = new ControlTemplate();
+            template.TargetType = typeof(FunctionSeries);
+            OpenSilver.Internal.Xaml.RuntimeHelpers.SetTemplateContent(template,
+                OpenSilver.Internal.Xaml.RuntimeHelpers.Create_XamlContext(),
+                (owner, context) =>
+                {
+                    var canvas = OpenSilver.Internal.Xaml.RuntimeHelpers.XamlContext_WriteStartObject(context, new Canvas());
+                    canvas.SetValue(NameProperty, "PlotArea");
+                    OpenSilver.Internal.Xaml.RuntimeHelpers.SetTemplatedParent(canvas, owner);
+                    OpenSilver.Internal.Xaml.RuntimeHelpers.XamlContext_RegisterName(context, "PlotArea", canvas);
+                    var path = OpenSilver.Internal.Xaml.RuntimeHelpers.XamlContext_WriteStartObject(context, new Path());
+                    OpenSilver.Internal.Xaml.RuntimeHelpers.SetTemplatedParent(path, owner);
+                    var extension1 = new TemplateBindingExtension { DependencyPropertyName = "LineBrush" };
+                    path.SetValue(Shape.StrokeProperty, extension1.ProvideValue(new ServiceProvider(owner, null)));
+                    var extension2 = new TemplateBindingExtension { DependencyPropertyName = "LineThickness" };
+                    path.SetValue(Shape.StrokeThicknessProperty, extension2.ProvideValue(new ServiceProvider(owner, null)));
+                    var extension3 = new TemplateBindingExtension { DependencyPropertyName = "Geometry" };
+                    path.SetValue(Path.DataProperty, extension3.ProvideValue(new ServiceProvider(owner, null)));
+                    canvas.Children.Add(path);
+                    return canvas;
+                });
+            Template = template;
+#else
             Template = XamlReader.Load(DefaultTemplate) as ControlTemplate;
+#endif
             LineBrush = new SolidColorBrush(Colors.Purple);
         }
 

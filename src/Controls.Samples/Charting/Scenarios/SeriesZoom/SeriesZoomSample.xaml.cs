@@ -82,13 +82,25 @@ namespace System.Windows.Controls.Samples
         /// <param name="e">Event arguments.</param>
         private void ZoomIntoChartSample_Loaded(object sender, RoutedEventArgs e)
         {
+#if OPENSILVER
+            ZoomChart.LayoutUpdated += OnLayoutUpdated;
+#else
             // force synchronous layout pass
             ZoomChart.UpdateLayout();
 
             // and force initial zoom 
             UpdateChart(0);
+#endif
         }
-        
+
+#if OPENSILVER
+        private void OnLayoutUpdated(object sender, EventArgs e)
+        {
+            ZoomChart.LayoutUpdated -= OnLayoutUpdated;
+            UpdateChart(0);
+        }
+#endif
+
         /// <summary>
         /// Handles the changing of the zoomlevel.
         /// </summary>
