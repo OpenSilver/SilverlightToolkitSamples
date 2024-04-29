@@ -17,6 +17,12 @@ namespace System.Windows.Controls.Samples.Browser.Pages
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
+
+            if (!await JSRuntime.InvokeAsync<bool>("getOSFilesLoadedPromise"))
+            {
+                throw new InvalidOperationException("Failed to initialize OpenSilver. Check your browser's console for error details.");
+            }
+
             var runtime = new UnmarshalledJavaScriptExecutionHandler(JSRuntime);
             Cshtml5Initializer.Initialize(runtime);
             Program.RunApplication();
