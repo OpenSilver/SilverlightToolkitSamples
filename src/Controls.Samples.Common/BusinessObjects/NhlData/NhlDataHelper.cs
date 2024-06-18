@@ -55,11 +55,7 @@ namespace System.Windows.Controls.Samples
             IList<NhlNode> result = null;
             NhlNode node = new NhlNode();
             // Stream stream = Application.GetResourceStream(new Uri("/System.Windows.Controls.Samples.BusinessObjects.NhlData.NhlData.xml", UriKind.RelativeOrAbsolute)).Stream
-#if OPENSILVER
-            using (Stream stream = node.GetType().Assembly.GetManifestResourceStream("BusinessObjects\\NhlData\\NhlData.xml"))
-#else
             using (Stream stream = node.GetType().Assembly.GetManifestResourceStream("System.Windows.Controls.Samples.BusinessObjects.NhlData.NhlData.xml"))
-#endif
             {
                 result = LoadNhlNodes(XElement.Load(stream).Elements("NhlNode"));
             }

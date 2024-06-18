@@ -113,11 +113,7 @@ namespace System.Windows.Controls.Samples
         private void Image_Click(object sender, RoutedEventArgs e)
         {
             BitmapImage bitmapImage = new BitmapImage();
-#if OPENSILVER
-            using (Stream resourceStream = typeof(SharedResources).Assembly.GetManifestResourceStream("Images\\Dock.jpg"))
-#else
             using (Stream resourceStream = typeof(SharedResources).Assembly.GetManifestResourceStream("System.Windows.Controls.Samples.Images.Dock.jpg"))
-#endif
             {
                 if (resourceStream != null)
                 {

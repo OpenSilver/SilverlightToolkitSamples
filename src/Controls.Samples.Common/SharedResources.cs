@@ -25,20 +25,12 @@ namespace System.Windows.Controls.Samples
         /// <summary>
         /// Prefix of images loaded as resources.
         /// </summary>
-#if OPENSILVER
-        private const string ResourceImagePrefix = "Images\\";
-#else
         private const string ResourceImagePrefix = "System.Windows.Controls.Samples.Images.";
-#endif
 
         /// <summary>
         /// Prefix of icons loaded as resources.
         /// </summary>
-#if OPENSILVER
-        private const string ResourceIconPrefix = "Icons\\";
-#else
         private const string ResourceIconPrefix = "System.Windows.Controls.Samples.Icons.";
-#endif
 
         /// <summary>
         /// Get an embedded resource image from the assembly.
