@@ -66,7 +66,10 @@ namespace System.Windows.Controls.Samples
         /// </summary>
         /// <param name="sender">The source object.</param>
         /// <param name="e">The event data.</param>
-        private async void Search_Populating(object sender, PopulatingEventArgs e)
+#if OPENSILVER
+        async
+#endif
+        private void Search_Populating(object sender, PopulatingEventArgs e)
         {
             AutoCompleteBox autoComplete = (AutoCompleteBox)sender;
 
