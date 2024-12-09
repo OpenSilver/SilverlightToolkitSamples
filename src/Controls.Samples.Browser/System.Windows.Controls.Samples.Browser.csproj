@@ -4,6 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <OpenSilverType>7</OpenSilverType>
     <PublishTrimmed>true</PublishTrimmed>
+    <WasmEnableSIMD>false</WasmEnableSIMD>
   </PropertyGroup>
 
   <ItemGroup>
