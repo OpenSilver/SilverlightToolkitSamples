@@ -235,14 +235,14 @@ namespace System.Windows.Controls.Samples
             template.TargetType = typeof(FunctionSeries);
             OpenSilver.Internal.Xaml.RuntimeHelpers.SetTemplateContent(template,
                 OpenSilver.Internal.Xaml.RuntimeHelpers.Create_XamlContext(),
-                (owner, context) =>
+                (IFrameworkElement owner, OpenSilver.Internal.Xaml.Context.XamlContext context) =>
                 {
                     var canvas = OpenSilver.Internal.Xaml.RuntimeHelpers.XamlContext_WriteStartObject(context, new Canvas());
                     canvas.SetValue(NameProperty, "PlotArea");
-                    OpenSilver.Internal.Xaml.RuntimeHelpers.SetTemplatedParent(canvas, owner);
+                    OpenSilver.Internal.Xaml.RuntimeHelpers.XamlContext_SetTemplatedParent(context, canvas);
                     OpenSilver.Internal.Xaml.RuntimeHelpers.XamlContext_RegisterName(context, "PlotArea", canvas);
                     var path = OpenSilver.Internal.Xaml.RuntimeHelpers.XamlContext_WriteStartObject(context, new Path());
-                    OpenSilver.Internal.Xaml.RuntimeHelpers.SetTemplatedParent(path, owner);
+                    OpenSilver.Internal.Xaml.RuntimeHelpers.XamlContext_SetTemplatedParent(context, path);
                     var extension1 = new TemplateBindingExtension { DependencyPropertyName = "LineBrush" };
                     path.SetValue(Shape.StrokeProperty, extension1.ProvideValue(new ServiceProvider(owner, null)));
                     var extension2 = new TemplateBindingExtension { DependencyPropertyName = "LineThickness" };
